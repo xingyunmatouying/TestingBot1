@@ -175,7 +175,8 @@ online_moves:
     min_candidates: 1                     # Minimum number of candidate moves.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
     timeout: 5                            # Time the server has to respond.
-    selection: "best"                     # Move selection is one of "optimal", "best" or "good".
+    selection: "best"
+    best_move: false   # Move selection is one of "optimal", "best" or "good".
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from chessdb. (Comment this line for max moves)
   online_egtb:
