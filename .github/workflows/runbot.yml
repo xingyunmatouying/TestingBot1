@@ -29,6 +29,10 @@ jobs:
       - name: Give perms to execute engines 2
         run: chmod +x ./engines/fairy-stockfish.exe
 
+      - name: Replace token
+        run: |
+          sed -i 's|BOT_TOKEN|${{ secrets.BOT_TOKEN }}|g' config.yml
+
       - name: Run bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
