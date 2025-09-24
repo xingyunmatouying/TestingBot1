@@ -24,10 +24,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Give perms to execute engines
-        run: chmod +x ./engines/stockfish.exe
+        run: chmod +x ./engines/stockfish
 
       - name: Give perms to execute engines 2
-        run: chmod +x ./engines/fairy-stockfish.exe
+        run: chmod +x ./engines/fairy-stockfish
 
       - name: Replace token
         run: |
