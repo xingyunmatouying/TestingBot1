@@ -23,6 +23,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Give perms to execute engines
+        run: chmod +x ./engines/stockfish.exe
+
+      - name: Give perms to execute engines 2
+        run: chmod +x ./engines/fairy-stockfish.exe
+
       - name: Run bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
