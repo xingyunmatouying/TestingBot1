@@ -8,8 +8,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                        # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 1.0                           # Max time per move in seconds.
@@ -22,8 +22,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                           # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 0.001                           # Max time per move in seconds.
@@ -36,8 +36,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                           # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 1.0                           # Max time per move in seconds.
@@ -50,8 +50,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                          # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 3.0                           # Max time per move in seconds.
@@ -64,8 +64,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                           # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 10.0                           # Max time per move in seconds.
@@ -79,8 +79,8 @@ engines:
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine.
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 512                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 1024                         # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
 #     time: 1.0                           # Max time per move in seconds.
@@ -94,7 +94,7 @@ syzygy:
   standard:
     enabled: true                        # Activate local syzygy endgame tablebases.
     paths:                                # Paths to local syzygy endgame tablebases.
-      - "C:/Users/Maxim/Downloads/syzygy"
+      - "./syzygy"
     max_pieces: 5                         # Count of max pieces in the local syzygy endgame tablebases.
     instant_play: true                    # Whether the bot should play directly from syzygy without engine if possible.
   antichess:
