@@ -26,7 +26,7 @@ engines:
       Hash: 1024                           # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 300                  # Increase if your bot flags games too often.
     limits:                               # Limits that end the move calculation early.
-#     time: 0.001                           # Max time per move in seconds.
+      time: 0.001                           # Max time per move in seconds.
 #     depth: 26                           # Max depth per move.
 #     nodes: 4000000                      # Max nodes per move.
   blitz:                               # Engine used for standard chess and when no suitable special engine is configured.
