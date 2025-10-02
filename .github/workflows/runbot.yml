@@ -22,11 +22,19 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Give perms to execute engines
-        run: chmod +x ./engines/stockfish
+      - name: Install Stockfish
+        run: |
+          curl -sSL https://raw.githubusercontent.com/ppigazzini/stockfish-downloader/main/posix_helper.sh | sh -s
+          tar -xf stockfish-*.tar
+          rm stockfish-*.tar
+          mv -f stockfish/stockfish-* engines/stockfish
+          rm -r stockfish
 
-      - name: Give perms to execute engines 2
-        run: chmod +x ./engines/fairy-stockfish
+      - name: Give perms to execute engines
+        run: |
+          chmod +x ./engines/stockfish
+          chmod +x ./engines/fairy-stockfish
+
 
       - name: Replace token
         run: |
@@ -35,4 +43,4 @@ jobs:
       - name: Run bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
-        run: python user_interface.py "tournament Sc1zCBJN"
+        run: python user_interface.py matchmaking
