@@ -131,7 +131,8 @@ opening_books:
 #     names:                              # List of names of books to use as black.
 #       - BlackBook
     standard:
-      selection: best_move         # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+      selection: best_move
+      allow_repetitions: true            # Move selection is one of "weighted_random", "uniform_random" or "best_move".
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
       names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
         - Book1
@@ -141,12 +142,12 @@ opening_books:
 
 online_moves:
   opening_explorer:
-    enabled: false
-    allow_repetitions: false              # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
+    enabled: false                        # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
     priority: 300                         # Priority with which this move source is used. Higher priority is used first.
-#   player: Username                      # Player whose Lichess opening explorer should be used. Comment this to use your own or with anti your opponent's.
+#   player: Username                      # Specific player whose Lichess opening explorer should be used, or “masters” to use the masters database.
     only_without_book: false              # Whether the Lichess opening explorer should only be used if there is no matching book.
     use_for_variants: false               # Whether the Lichess opening explorer should be used for other variants than standard and chess960.
+    allow_repetitions: false              # Whether the Lichess opening explorer can create repetitions on the board. Can lead to unintentional draws.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
     timeout: 5                            # Time the server has to respond.
     min_games: 5                          # Minimum number of games in which the position must have occurred.
@@ -156,28 +157,26 @@ online_moves:
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from Lichess opening explorer. (Comment this line for max moves)
   lichess_cloud:
-    enabled: false
-    allow_repetitions: false             # Activate online moves from Lichess cloud eval.
+    enabled: false                        # Activate online moves from Lichess cloud eval.
     priority: 200                         # Priority with which this move source is used. Higher priority is used first.
     only_without_book: false              # Whether the cloud should only be used if there is no matching book.
-    use_for_variants: false
-    trust_eval: false  # Whether the cloud should be used for other variants than standard and chess960.
+    use_for_variants: false               # Whether the cloud should be used for other variants than standard and chess960.
+    allow_repetitions: false              # Whether the cloud can create repetitions on the board. Can lead to unintentional draws.
+    trust_eval: false                     # Whether the cloud eval should be trusted for draw offers and resignations.
     min_eval_depth: 10                    # Minimum evaluation depth.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
     timeout: 5                            # Time the server has to respond.
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from Lichess cloud eval. (Comment this line for max moves)
   chessdb:
-    enabled: false
-    allow_repetitions: false
-    trust_eval: false    # Activate online moves from https://chessdb.cn/queryc_en/
+    enabled: false                        # Activate online moves from https://chessdb.cn/queryc_en/
     priority: 100                         # Priority with which this move source is used. Higher priority is used first.
     only_without_book: false              # Whether the chessdb should only be used if there is no matching book.
-    min_candidates: 1                     # Minimum number of candidate moves.
+    allow_repetitions: false              # Whether the chessdb can create repetitions on the board. Can lead to unintentional draws.
+    trust_eval: false                     # Whether the chessdb eval should be trusted for draw offers and resignations.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
     timeout: 5                            # Time the server has to respond.
-    selection: "best"
-    best_move: false   # Move selection is one of "optimal", "best" or "good".
+    best_move: false                      # Whether only the single best move should be played.
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from chessdb. (Comment this line for max moves)
   online_egtb:
@@ -219,19 +218,17 @@ challenge:                                # Incoming challenges.
     - kingOfTheHill
     - racingKings
     - threeCheck
-  time_controls:                          # Speeds or time controls in initial_minutes+increment_seconds format to accept.
-    - 1+0
-    - 1.5+0
-    - 1+1
-    - 2+1
-#    - 0+1
+  bot_time_controls:                      # Speeds or time controls in initial_minutes+increment_seconds format to accept against BOTs.
     - bullet
-    - 0+2
-    - 0+3
     - blitz
     - rapid
     - classical
-#   - 25+0
+    - 25+0
+  human_time_controls:                    # Speeds or time controls in initial_minutes+increment_seconds format to accept against humans.
+    - bullet
+    - blitz
+    - rapid
+    - classical
   bot_modes:                              # Game modes to accept against BOTs.
      - casual                              # Unrated games.
      - rated                               # Rated games
@@ -318,6 +315,9 @@ blacklist:                                # List of users who are not challenged
 - AllieTheChessBot
 - maello_bot
 - Funeddy-Robotik
+
+online_blacklists:                        # List of URLs for online blacklists. One username per line.
+# -
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
   Book1: "./engines/Book1.bin"
