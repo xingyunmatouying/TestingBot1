@@ -137,6 +137,12 @@ opening_books:
       names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
         - Book1
         - Book
+        - YetAnotherBook
+    standard_tournament:
+      selection: best_move
+      allow_repeitions: true
+      names:
+        - Tourneys
     chess960:
       selection: best_move
       allow_repetitions: true
@@ -364,3 +370,5 @@ books:                                    # Names of the opening books (to be us
   Book1: "./engines/Book1.bin"
   Book: "./engines/Booktest.bin"
   960: "./engines/c960.bin"
+  YetAnotherBook: "./engines/yetanotherbook.bin"
+  Tourneys: "./engines/tournm.bin"
